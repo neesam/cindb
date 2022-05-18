@@ -1,2 +1,1 @@
-# cindb
-# update test
+# CinDB
