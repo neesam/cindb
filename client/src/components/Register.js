@@ -22,10 +22,11 @@ const Register = () => {
         };
         try {
             await axios.post("http://localhost:8000/api/user/register", userData);
-            navigate("/home");
+            //navigate("/home");
         } catch (error) {
             setError(error.response.data.error);
-            navigate("/")
+            console.log(error);
+            //navigate("/")
         }
     };
     return(
