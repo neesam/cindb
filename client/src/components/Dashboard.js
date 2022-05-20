@@ -13,15 +13,16 @@ const Dashboard = (props) => {
     const navigate = useNavigate()
 
     const [ratings, setRatings] = useState([]);
+    const [authorList, setAuthorList] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:8011/api')
+        axios.get('http://localhost:8000/api')
             .then(res => setRatings(res.data))
             .catch(err => console.log(err))
     }, []) 
 
     function handleDelete(index) {
-        axios.delete('http://localhost:8011/api/author/' + id)
+        axios.delete('http://localhost:8000/api/author/' + id)
             .then(res => {
                 setAuthorList(authorList.filter((item) => item._id !== index))
                 navigate('/')
@@ -32,23 +33,23 @@ const Dashboard = (props) => {
     return (
         <div>
             <Nav className="justify-content-end" activeKey="/home">
-    <Nav.Item>
-        <Nav.Link style={{fontSize: '40px', padding: '30px', marginRight: '30px'}} href="/authors/new"><b>CinDB</b></Nav.Link>
-    </Nav.Item>
-    </Nav>
+                <Nav.Item>
+                    <Nav.Link style={{fontSize: '40px', padding: '30px', marginRight: '30px'}} href="/authors/new"><b>CinDB</b></Nav.Link>
+                </Nav.Item>
+            </Nav>
 
-    <div>
+    {/* <div>
         {ratings ? ratings.map((item, index) => {
             <h2 src={item.title}></h2>
-        {item.star === '5' ? <img>{}</img> : null}
+            {item.star === '5' ? <img>{}</img> : null}
         <i class="fa-solid fa-star"></i>
     }) : null}
+    </div> */}
+
+    <i class="fa-solid fa-star"></i>
+
+
     </div>
-
-  <i class="fa-solid fa-star"></i>
-
-
-  </div>
     )
 }
 export default Dashboard;
