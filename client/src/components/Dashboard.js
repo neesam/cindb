@@ -44,7 +44,7 @@ const Dashboard = (props) => {
             {item.star === '5' ? <img>{}</img> : null}
         <i class="fa-solid fa-star"></i>
     }) : null}
-    </div> */}
+    </div>  This need to be fixed*/}
 
     <i class="fa-solid fa-star"></i>
 
