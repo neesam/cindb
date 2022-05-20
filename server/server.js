@@ -16,6 +16,8 @@ app.use(express.json());                           /* This is new and allows JSO
 app.use(express.urlencoded({ extended: true }));   /* This is new and allows JSON Objects with strings and arrays*/
 
 require("./routes/user.routes")(app);
+require("./config/mongoose.config");
+
 const server = app.listen(process.env.PORT, () => {
     console.log(`Listening at Port ${process.env.PORT}`)
 })

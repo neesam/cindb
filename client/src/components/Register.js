@@ -15,6 +15,11 @@ const Register = () => {
     const [error, setError] = useState("");
 
     const navigate = useNavigate();
+
+    function refreshPage() {
+        window.location.reload(false);
+    } 
+
     const handleSubmit = async(e) => {
         e.preventDefault();
         const userData = {
@@ -22,11 +27,11 @@ const Register = () => {
         };
         try {
             await axios.post("http://localhost:8000/api/user/register", userData);
-            //navigate("/home");
+            refreshPage();
+            alert("Please login to access the page!");
         } catch (error) {
             setError(error.response.data.error);
-            console.log(error);
-            //navigate("/")
+            navigate("/");
         }
     };
     return(
