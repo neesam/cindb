@@ -23,13 +23,18 @@ const register = async (req, res) => {
         return res.status(400).json(error);
     }
 
-    const newUser = new User(body);    
+    const newUser = new User(body);
+    
+    if(!body.firstName || !body.lastName || !body.userName || !body.email || !body.password || !body.confirmPassword){
+        res.status(400).json({error: "Please fill out the required information below."})
+    }
+        
     try{
         const newUserObj = await newUser.save();
         return res.json(newUserObj);
     } catch(error) {
         console.log("error in the mongoose save block");
-        return res.status(400).json({msg: "Error creating user"});
+        return res.status(400).json({error: "Error creating user"});
     }
     const result = await User.create(body);
     console.log("result", result);

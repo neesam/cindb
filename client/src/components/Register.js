@@ -31,8 +31,7 @@ const Register = () => {
             alert("Please login to access the page!")
         } catch (error) {
             setError(error.response.data.error);
-            console.log(error, "Error Here!");
-            //navigate("/")
+            navigate("/")
         }
     };
     return(
