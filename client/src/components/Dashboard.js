@@ -33,17 +33,17 @@ const Dashboard = (props) => {
         <div>
             <Nav className="justify-content-end" activeKey="/home">
     <Nav.Item>
-      <Nav.Link style={{fontSize: '40px', padding: '30px', marginRight: '30px'}} href="/authors/new"><b>CinDB</b></Nav.Link>
+        <Nav.Link style={{fontSize: '40px', padding: '30px', marginRight: '30px'}} href="/authors/new"><b>CinDB</b></Nav.Link>
     </Nav.Item>
-  </Nav>
+    </Nav>
 
-  <div>
-      {ratings ? ratings.map((item, index) => {
-          <h2 src={item.title}></h2>
-          {item.star === '5' ? <img>{}</img> : null}
-          <i class="fa-solid fa-star"></i>
-      }) : null}
-  </div>
+    <div>
+        {ratings ? ratings.map((item, index) => {
+            <h2 src={item.title}></h2>
+        {item.star === '5' ? <img>{}</img> : null}
+        <i class="fa-solid fa-star"></i>
+    }) : null}
+    </div>
 
   <i class="fa-solid fa-star"></i>
 
