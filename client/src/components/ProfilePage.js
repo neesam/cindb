@@ -38,11 +38,14 @@ const ProfilePage = () => {
                 <h2>@{user.userName}</h2>
                 <h2>{user.firstName} {user.lastName}</h2>
                 <div>
-                    <Link className="btn btn-warning m-1" to={`/home/${user.userName}`}>Edit</Link>
+                    <Link className="btn btn-warning m-1" to={`/user/edit/${user.userName}`}>Edit</Link>
                     <button className="btn btn-danger m-1" onClick={() => handleDelete(user._id)}>Delete</button>
                 </div>
             </div>
-            <h1>{user._id}</h1>
+            <div className="m-4 text-danger">
+                <h1>!!Space held for users comments/reviews!!</h1>
+            </div>
+            
         </div>
     )
 };

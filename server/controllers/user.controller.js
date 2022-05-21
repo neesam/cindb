@@ -96,10 +96,19 @@ const findOneUser = (req, res) => {
         })
 };
 
+const updateUser = (req, res) => {
+    User.findOneAndUpdate({_id: req.params.id}, req.body, {new:true, runValidators: true})
+    .then((updatedUser) => {
+        res.json(updatedUser)
+    })
+    .catch((err) => {
+        res.status(400).json(err)
+    })};
+
 const deleteUser = (req, res) => {
     User.deleteOne({_id: req.params.id})
         .then((deleteConfirmation) => {
-            clearCookie("usertoken");
+            res.clearCookie("usertoken");
             res.json(deleteConfirmation);
         })
         .catch((err) => {
@@ -112,5 +121,6 @@ module.exports = {
     login,
     logout,
     findOneUser,
-    deleteUser
+    deleteUser,
+    updateUser
 }
