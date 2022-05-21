@@ -99,7 +99,7 @@ const findOneUser = (req, res) => {
 const deleteUser = (req, res) => {
     User.deleteOne({_id: req.params.id})
         .then((deleteConfirmation) => {
-            res.clearCookie("usertoken");
+            clearCookie("usertoken");
             res.json(deleteConfirmation);
         })
         .catch((err) => {

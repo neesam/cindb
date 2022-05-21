@@ -37,7 +37,7 @@ const Login = () => {
                     <Form.Control id="inlineFormInputGroupUsername" placeholder="Username" onChange={(e) => setUserName(e.target.value)} />
                 </InputGroup>
             </div>
-            <div class="mt-3">
+            <div className="mt-3">
                 <Form.Control type="password" onChange={(e) => setPassword(e.target.value)} placeholder="Password"/>
             </div>
             <div>
