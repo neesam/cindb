@@ -94,11 +94,23 @@ const findOneUser = (req, res) => {
             res.status(400).json(err);
             console.log("error")
         })
-}
+};
+
+const deleteUser = (req, res) => {
+    User.deleteOne({_id: req.params.id})
+        .then((deleteConfirmation) => {
+            res.clearCookie("usertoken");
+            res.json(deleteConfirmation);
+        })
+        .catch((err) => {
+            res.json(err)
+            console.log('error', err)
+        })};
 
 module.exports = {
     register,
     login,
     logout,
-    findOneUser
+    findOneUser,
+    deleteUser
 }
