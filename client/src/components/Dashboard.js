@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import Table from 'react-bootstrap/Table';
 import Nav from 'react-bootstrap/Nav';
+import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useParams, useNavigate } from 'react-router-dom';
 
@@ -30,12 +31,19 @@ const Dashboard = (props) => {
             .catch(err => console.log(err))
     }
 
+    const handleLogout = () => {
+        axios.post("http://localhost:8000/api/user/logout", {}, {withCredentials:true})
+            .then((res) => console.log(res), navigate("/"))
+            .catch((err) => console.log(err, "Error"));
+    };
+
     return (
         <div>
             <Nav className="justify-content-end" activeKey="/home">
                 <Nav.Item>
                     <Nav.Link style={{fontSize: '40px', padding: '30px', marginRight: '30px'}} href={`/user/${userName}`}><b>View Profile</b></Nav.Link>
                     <Nav.Link style={{fontSize: '40px', padding: '30px', marginRight: '30px'}} href="/authors/new"><b>CinDB</b></Nav.Link>
+                    <Button classname="logoutBtn" size="sm" variant="danger" onClick={()=> handleLogout()}>Logout</Button>
                 </Nav.Item>
             </Nav>
 
