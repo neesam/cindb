@@ -8,7 +8,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 const Dashboard = (props) => {
 
-    const {id} = useParams();
+    const {id, userName} = useParams();
 
     const navigate = useNavigate()
 
@@ -34,6 +34,7 @@ const Dashboard = (props) => {
         <div>
             <Nav className="justify-content-end" activeKey="/home">
                 <Nav.Item>
+                    <Nav.Link style={{fontSize: '40px', padding: '30px', marginRight: '30px'}} href={`/user/${userName}`}><b>View Profile</b></Nav.Link>
                     <Nav.Link style={{fontSize: '40px', padding: '30px', marginRight: '30px'}} href="/authors/new"><b>CinDB</b></Nav.Link>
                 </Nav.Item>
             </Nav>

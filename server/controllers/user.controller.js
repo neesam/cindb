@@ -85,10 +85,15 @@ const logout = (req, res) => {
 };
 
 const findOneUser = (req, res) => {
-    const {params} = req;
-    User.findOne({_id: params.id})
-        .then((oneUser) => res.json(oneUser))
-        .catch((err) => res.status(400).json(err))
+    User.findOne({userName: req.params.userName})
+        .then((oneUser) => {
+            res.json(oneUser);
+            console.log(oneUser);
+        })
+        .catch((err) => {
+            res.status(400).json(err);
+            console.log("error")
+        })
 }
 
 module.exports = {
