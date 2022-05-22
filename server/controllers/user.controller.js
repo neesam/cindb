@@ -106,15 +106,16 @@ const updateUser = (req, res) => {
     })};
 
 const deleteUser = (req, res) => {
+    res.clearCookie("usertoken");
     User.deleteOne({_id: req.params.id})
         .then((deleteConfirmation) => {
-            res.clearCookie("usertoken");
             res.json(deleteConfirmation);
         })
         .catch((err) => {
             res.json(err)
             console.log('error', err)
-        })};
+        });
+    };
 
 module.exports = {
     register,
