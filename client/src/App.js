@@ -4,9 +4,9 @@ import Main from './views/LogReg';
 import Dashboard from './components/Dashboard';
 import ProfilePage from './components/ProfilePage';
 import EditUser from './components/EditProfile';
-import MovieForm from "./components/MovieForm";
-import EditMovie from "./components/EditMovie";
-import MovieDetails from "./components/MovieDetails";
+import MovieForm from "./components/ReviewForm";
+import EditMovie from "./components/EditReview";
+import MovieDetails from "./components/ReviewDetails";
 
 function App() {
   return (
