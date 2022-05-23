@@ -8,4 +8,5 @@ module.exports = (app) => {
     app.put("/api/movie/:id", movieController.updateMovie);
     app.delete("/api/movie/:id", movieController.deleteExistingMovie);
     app.get("/api/ratings/:userName", movieController.findRatingsByUser);
+    app.delete("/api/rating/:id", movieController.deleteRating);
 };

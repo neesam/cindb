@@ -62,6 +62,25 @@ const findRatingsByUser = (req, res) =>{
             .catch((err) => {
                 res.json(err)
             })
-}
+};
 
-module.exports = {createNewMovie, oneMovie, allMoviesList, updateMovie, deleteExistingMovie, findRatingsByUser};
+const deleteRating = (req, res) =>{
+    Movie.deleteOne({_id: req.params.id})
+    .then((deleteConfirmation) => {
+        res.json(deleteConfirmation);
+    })
+    .catch((err) => {
+        res.json(err)
+        console.log('error', err)
+    });
+};
+
+module.exports = {
+    createNewMovie,
+    oneMovie,
+    allMoviesList,
+    updateMovie,
+    deleteExistingMovie,
+    findRatingsByUser,
+    deleteRating,
+};
