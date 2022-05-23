@@ -54,4 +54,14 @@ const deleteExistingMovie = (req, res) => {
         });
 };
 
-module.exports = {createNewMovie, oneMovie, allMoviesList, updateMovie, deleteExistingMovie};
+const findRatingsByUser = (req, res) =>{
+    Movie.find({userName:req.params.userName})
+            .then((ratings) => {
+                res.json(ratings)
+            })
+            .catch((err) => {
+                res.json(err)
+            })
+}
+
+module.exports = {createNewMovie, oneMovie, allMoviesList, updateMovie, deleteExistingMovie, findRatingsByUser};

@@ -49,6 +49,9 @@ const Dashboard = (props) => {
                 <Nav.Item>
                     <Button style={{marginTop:'50px'}} classname="logoutBtn" size="sm" variant="danger" onClick={()=> handleLogout()}>Logout</Button>
                 </Nav.Item>
+                <Nav.Item class="profile">
+                    <Nav.Link style={{fontSize: '20px', padding: '50px'}} href={`/newRating/${userName}`}><b>Add Rating</b></Nav.Link>
+                </Nav.Item>
             </Nav>
 
     {/* <div>

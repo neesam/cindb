@@ -6,12 +6,23 @@ import "bootstrap/dist/css/bootstrap.css";
 const ProfilePage = () => {
     const {userName} = useParams();
     const [user, setUser] = useState("");
+    const [ratings, setRatings] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
         axios.get(`http://localhost:8000/api/user/${userName}`, {withCredentials : true})
         .then(res => {
             setUser(res.data);
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }, []);
+
+    useEffect(() => {
+        axios.get(`http://localhost:8000/api/ratings/${userName}`, {withCredentials : true})
+        .then(res => {
+            setRatings(res.data);
         })
         .catch(err => {
             console.log(err)
@@ -25,7 +36,7 @@ const ProfilePage = () => {
             navigate('/');
         })
         .catch((err) => {
-            console.log(err);
+            console.log(err)
         })};
 
     return(
@@ -42,10 +53,28 @@ const ProfilePage = () => {
                     <button className="btn btn-danger m-1" onClick={() => handleDelete(user._id)}>Delete</button>
                 </div>
             </div>
-            <div className="m-4 text-danger">
-                <h1>!!Space held for users comments/reviews!!</h1>
+            <div className="m-4">
+                <h2>@{user.userName}'s Ratings</h2>
+                <table className="table">
+                    <thead>
+                        <tr>
+                            <td>Name</td>
+                            <td>Rating</td>
+                            <td>Comment</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {ratings.map((rating, index) => {
+                            return (
+                                <tr key={index}>
+                                    <td>{rating.movieName}</td>
+                                    <td>{rating.rating}</td>
+                                    <td>{rating.comment}</td>
+                                </tr>
+                        )})}
+                    </tbody>
+                </table>
             </div>
-            
         </div>
     )
 };

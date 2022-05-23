@@ -18,7 +18,7 @@ function App() {
             <Route path="/home/:userName" element={<Dashboard/>}/>
             <Route path="/user/:userName" element={<ProfilePage/>}/>
             <Route path="/user/edit/:user" element={<EditUser/>}/>
-            <Route path="/new" element={<MovieForm />} />
+            <Route path="/newRating/:userName" element={<MovieForm />} />
             <Route path="/edit/:id" element={<EditMovie />} />
             <Route path="/details/:id" element={<MovieDetails />} />
           </Routes>

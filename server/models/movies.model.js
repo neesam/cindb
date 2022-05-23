@@ -19,6 +19,10 @@ const MoviesSchema = {
         minLength: [2, "Name must be at least 3 characters"],
     },
 
+    userName: {
+        type: String,
+    }
+
 };
 
 module.exports = mongoose.model("Movie", MoviesSchema);

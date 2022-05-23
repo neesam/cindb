@@ -7,5 +7,5 @@ module.exports = (app) => {
     app.get("/api/movie", movieController.allMoviesList);
     app.put("/api/movie/:id", movieController.updateMovie);
     app.delete("/api/movie/:id", movieController.deleteExistingMovie);
-    
+    app.get("/api/ratings/:userName", movieController.findRatingsByUser);
 };

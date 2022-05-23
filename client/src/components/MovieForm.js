@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import "../App.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import React from 'react';
 
 
@@ -11,14 +11,15 @@ const MovieForm = () => {
     const [comment, setComment] = useState("");
     
     const navigate = useNavigate();
+    const {userName} = useParams();
     const [errors, setErrors] = useState({});
     const handleSubmit = (e) => {
         e.preventDefault();
         axios
-        .post("http://localhost:8000/api/movie", { movieName, rating, comment })
+        .post("http://localhost:8000/api/movie", { movieName, rating, comment, userName })
         .then((response) => {
-            console.log("r",response);
-            navigate("/");
+            console.log("success",response);
+            navigate(`/home/${userName}`);
     })
         .catch((err) => {
             console.log("error", err.response.data.err.errors); 
@@ -33,6 +34,7 @@ const MovieForm = () => {
         
             <Link to="/">Home</Link>
             <form onSubmit={handleSubmit}>
+                <input type="hidden" name="userName" value={{userName}} />
                 <div className="form-group">
                 <h3 className="purple-text">Create A Movie Rating</h3>
                 <div>
