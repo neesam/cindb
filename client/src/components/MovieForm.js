@@ -2,10 +2,12 @@ import axios from "axios";
 import { useState } from "react";
 import "../App.css";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { useEffect } from "react";
 import React from 'react';
 
 
 const MovieForm = () => {
+    const [user, setUser] = useState("");
     const [movieName, setMovieName] = useState("");
     const [rating, setRating] = useState("");
     const [comment, setComment] = useState("");
@@ -13,6 +15,16 @@ const MovieForm = () => {
     const navigate = useNavigate();
     const {userName} = useParams();
     const [errors, setErrors] = useState({});
+
+    useEffect(() => {
+        axios.get(`http://localhost:8000/api/user/${userName}`, {withCredentials : true})
+        .then(res => {
+            setUser(res.data);
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }, []);
     const handleSubmit = (e) => {
         e.preventDefault();
         axios
@@ -32,7 +44,7 @@ const MovieForm = () => {
         <div className="row">
         <div className="col-md-4 offset-md-2">
         
-            <Link to="/">Home</Link>
+            <Link to={`/home/${userName}`}>Home</Link>
             <form onSubmit={handleSubmit}>
                 <input type="hidden" name="userName" value={{userName}} />
                 <div className="form-group">
