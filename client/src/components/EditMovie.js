@@ -5,6 +5,7 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 
 const EditContractor = (props) => {
   const { id, userName } = useParams();
+  const [user, setUser] = useState("");
   const [movieNameEdit, setMovieNameEdit] = useState("");
   const [movieDetails, setMovieDetails] = useState("");
   const [ratingEdit, setRatingEdit] = useState("");
@@ -13,6 +14,16 @@ const EditContractor = (props) => {
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
   console.log(id);
+
+  useEffect(() => {
+    axios.get(`http://localhost:8000/api/user/${userName}`, { withCredentials: true })
+        .then(res => {
+            setUser(res.data);
+        })
+        .catch(err => {
+            console.log(err)
+        })
+}, []);
 
   useEffect(() => {
     axios
@@ -41,7 +52,7 @@ const EditContractor = (props) => {
       .put(`http://localhost:8000/api/movie/${id}`, { movieName: movieNameEdit, rating: ratingEdit, comment: commentEdit })
       .then((response) => {
         console.log(response);
-        navigate("/");
+        navigate(`/home/${userName}`);
       })
       .catch((err) => {
         console.log(err.response.data.err.errors);
