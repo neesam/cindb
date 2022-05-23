@@ -32,7 +32,7 @@ const MovieForm = () => {
         <div className="row">
         <div className="col-md-4 offset-md-2">
         
-            <Link to="/">Home</Link>
+            <Link to="/home">Home</Link>
             <form onSubmit={handleSubmit}>
                 <input type="hidden" name="userName" value={{userName}} />
                 <div className="form-group">
