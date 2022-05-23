@@ -25,6 +25,7 @@ const MovieForm = () => {
             console.log(err)
         })
     }, []);
+    
     const handleSubmit = (e) => {
         e.preventDefault();
         axios
