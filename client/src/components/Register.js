@@ -28,7 +28,7 @@ const Register = () => {
         try {
             await axios.post("http://localhost:8000/api/user/register", userData);
             refreshPage();
-            alert("Please login to access the page!");
+            alert("Success! Please login to access the page!");
         } catch (error) {
             setError(error.response.data.error);
             navigate("/");

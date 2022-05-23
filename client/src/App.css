@@ -41,3 +41,6 @@
 .submit-button{
   margin-top: 10px;
 }
+.nav-bar{
+  display: flex;
+}
