@@ -19,7 +19,7 @@ function App() {
             <Route path="/user/:userName" element={<ProfilePage/>}/>
             <Route path="/user/edit/:user" element={<EditUser/>}/>
             <Route path="/newRating/:userName" element={<MovieForm />} />
-            <Route path="/edit/:id" element={<EditMovie />} />
+            <Route path="/edit/:userName/:id" element={<EditMovie />} />
             <Route path="/details/:id" element={<MovieDetails />} />
           </Routes>
         </div>

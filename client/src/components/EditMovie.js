@@ -4,7 +4,7 @@ import "../App.css";
 import { Link, useParams, useNavigate } from "react-router-dom";
 
 const EditContractor = (props) => {
-  const { id } = useParams();
+  const { id, userName } = useParams();
   const [movieNameEdit, setMovieNameEdit] = useState("");
   const [movieDetails, setMovieDetails] = useState("");
   const [ratingEdit, setRatingEdit] = useState("");
@@ -55,7 +55,7 @@ const EditContractor = (props) => {
       <div className="container">
         <div className="row">
           <div className="col-md-4 offset-md-2">
-            <Link to="/">Home</Link>
+            <Link to={`/home/${userName}`}>Home</Link>
             <p><Link to="/new">Add a Movie / Show (title)</Link></p>
             <form onSubmit={handleSubmit}>
               <div className="form-group">
