@@ -11,6 +11,7 @@ const MovieForm = () => {
     const [movieName, setMovieName] = useState("");
     const [rating, setRating] = useState("");
     const [comment, setComment] = useState("");
+    const [movieDetail, setMovieDetail] = useState("");
 
     const navigate = useNavigate();
     const { userName } = useParams();
@@ -29,7 +30,7 @@ const MovieForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         axios
-            .post("http://localhost:8000/api/movie", { movieName, rating, comment, userName })
+            .post("http://localhost:8000/api/movie", { movieName, movieDetail, rating, comment, userName })
             .then((response) => {
                 console.log("success", response);
                 navigate(`/home/${userName}`);
@@ -61,6 +62,18 @@ const MovieForm = () => {
                                     {errors.movieName ? <p>{errors.movieName.message}</p> : null}
                                 </div>
 
+                                <div>
+                                    <label>Details</label><br />
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        onChange={(e) => setMovieDetail(e.target.value)}
+                                        value={movieDetail}
+                                    />
+                                    {errors.movieDetail ? <p>{errors.movieDetail.message}</p> : null}
+                                </div>
+
+                                
                                 <div>
                                     <label>Rating</label><br />
                                     <input
