@@ -33,13 +33,13 @@ const Dashboard = (props) => {
     };
 
     return (
-        <div>
-            <Nav style={{display: 'flex', justifyContent: 'center', position: 'relative', left: '300px'}} activeKey="/home">
+        <div style={{background: 'rgba(200, 50, 100, .5)', height: '100vh'}}>
+            <Nav style={{display: 'flex', justifyContent: 'center', position: 'relative', marginLeft: '600px'}} activeKey="/home">
                 <Nav.Item style={{fontSize: '40px', padding: '30px', marginRight: '30px'}}><b>CinDB</b>
                 </Nav.Item>
                 <div style={{display: 'flex',marginLeft: '200px'}}>
                 <Nav.Item class="profile">
-                    <Nav.Link style={{fontSize: '20px', padding: '50px'}} href={`/user/${userName}`}><b>View Profile</b></Nav.Link>
+                    <Nav.Link style={{fontSize: '20px', padding: '50px'}} href={`/user/${userName}`}><b>{userName}'s profile</b></Nav.Link>
                 </Nav.Item>
                 <Nav.Item class="profile">
                     <Nav.Link style={{fontSize: '20px', padding: '50px'}} href={`/newRating/${userName}`}><b>Add Rating</b></Nav.Link>
@@ -53,7 +53,7 @@ const Dashboard = (props) => {
         <div style={{display: 'flex', padding: '20px'}}>
             {allMovies.map((movie, index) => {
                 return (
-                  <div style={{padding: '50px'}} key={movie._id}>
+                  <div style={{padding: '50px', boxShadow: '10px 5px 5px 1px grey', borderRadius: '50px', marginRight: '10px'}} key={movie._id}>
                     <h2>{movie.movieName}</h2>
                     <h5>Rating: {movie.rating}</h5>
                     <h6> <a href={`/user/${userName}`}>{movie.userName}</a></h6>
