@@ -13,23 +13,18 @@ const Dashboard = (props) => {
 
     const navigate = useNavigate()
 
-    const [ratings, setRatings] = useState([]);
-    const [authorList, setAuthorList] = useState([]);
-
+    const [allMovies, setAllMovies] = useState([]);
     useEffect(() => {
-        axios.get('http://localhost:8000/api')
-            .then(res => setRatings(res.data))
-            .catch(err => console.log(err))
-    }, []) 
-
-    function handleDelete(index) {
-        axios.delete('http://localhost:8000/api/author/' + id)
-            .then(res => {
-                setAuthorList(authorList.filter((item) => item._id !== index))
-                navigate('/')
-            })
-            .catch(err => console.log(err))
-    }
+        axios
+        .get("http://localhost:8000/api/movie")
+        .then((response) => {
+            console.log(response.data);
+            setAllMovies(response.data);
+        })
+        .catch((err) => {
+            console.log(err.response);
+        });
+    }, []);
 
     const handleLogout = () => {
         axios.post("http://localhost:8000/api/user/logout", {}, {withCredentials:true})
@@ -39,10 +34,10 @@ const Dashboard = (props) => {
 
     return (
         <div>
-            <Nav className="justify-content-end" activeKey="/home">
-                <Nav.Item>
-                    <Nav.Link style={{fontSize: '40px', padding: '30px', marginRight: '30px'}} href="/authors/new"><b>CinDB</b></Nav.Link>
+            <Nav style={{display: 'flex', justifyContent: 'center', position: 'relative', left: '300px'}} activeKey="/home">
+                <Nav.Item style={{fontSize: '40px', padding: '30px', marginRight: '30px'}}><b>CinDB</b>
                 </Nav.Item>
+                <div style={{display: 'flex',marginLeft: '200px'}}>
                 <Nav.Item class="profile">
                     <Nav.Link style={{fontSize: '20px', padding: '50px'}} href={`/user/${userName}`}><b>View Profile</b></Nav.Link>
                 </Nav.Item>
@@ -52,18 +47,33 @@ const Dashboard = (props) => {
                 <Nav.Item>
                     <Button style={{marginTop:'50px'}} classname="logoutBtn" size="sm" variant="danger" onClick={()=> handleLogout()}>Logout</Button>
                 </Nav.Item>
+                </div>
             </Nav>
 
-    {/* <div>
-        {ratings ? ratings.map((item, index) => {
-            <h2 src={item.title}></h2>
-            {item.star === '5' ? <img>{}</img> : null}
-        <i class="fa-solid fa-star"></i>
-    }) : null}
-    </div>  This need to be fixed */}
+        <div style={{display: 'flex', padding: '20px'}}>
+            {allMovies.map((movie, index) => {
+                return (
+                  <div style={{padding: '50px'}} key={movie._id}>
+                    <h2>{movie.movieName}</h2>
+                    <h5>Rating: {movie.rating}</h5>
+                    <h6> <a href={`/user/${userName}`}>{movie.userName}</a></h6>
+                    <p>"{movie.comment}"</p>
 
-    <i class="fa-solid fa-star"></i>
 
+                    <div>
+                      <Link to={`/edit/${movie._id}`}>
+                      <button style={{marginRight: '10px'}} className="btn btn-primary">Edit</button>
+                      </Link>
+                      <Link to={`/details/${movie._id}`}>
+                        <button className="btn btn-primary">Details</button>
+                      </Link>
+
+                      
+                    </div>
+                  </div>
+                );
+              })}
+        </div>
 
     </div>
     )
