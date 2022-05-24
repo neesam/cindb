@@ -7,7 +7,7 @@ const EditContractor = (props) => {
   const { id, userName } = useParams();
   const [user, setUser] = useState("");
   const [movieNameEdit, setMovieNameEdit] = useState("");
-  const [movieDetails, setMovieDetails] = useState("");
+  const [movieDetailEdit, setMovieDetailEdit] = useState("");
   const [ratingEdit, setRatingEdit] = useState("");
   const [commentEdit, setCommentEdit] = useState("");
 
@@ -33,7 +33,7 @@ const EditContractor = (props) => {
         console.log('n', response.data.queriedMovie.movieName);
 
         setMovieNameEdit(response.data.queriedMovie.movieName);
-        setMovieDetails(response.data.queriedMovie);
+        setMovieDetailEdit(response.data.queriedMovie.movieDetail);
         setRatingEdit(response.data.queriedMovie.rating);
         setCommentEdit(response.data.queriedMovie.comment);
 
@@ -49,7 +49,7 @@ const EditContractor = (props) => {
     console.log("submit called")
     e.preventDefault();
     axios
-      .put(`http://localhost:8000/api/movie/${id}`, { movieName: movieNameEdit, rating: ratingEdit, comment: commentEdit })
+      .put(`http://localhost:8000/api/movie/${id}`, { movieName: movieNameEdit, movieDetail: movieDetailEdit, rating: ratingEdit, comment: commentEdit })
       .then((response) => {
         console.log(response);
         navigate(`/home/${userName}`);
@@ -73,7 +73,7 @@ const EditContractor = (props) => {
 
 
                 <h2>Edit Movie</h2>
-                <h4 className="purple-text">Details About: {movieDetails.movieName}</h4>
+             
 
                 <div>
                   <label htmlFor="name">Movie / Show (title)</label>
@@ -85,6 +85,18 @@ const EditContractor = (props) => {
                     onChange={(e) => setMovieNameEdit(e.target.value)}
                   />
                   {errors.movieName ? <p>{errors.movieName.message}</p> : null}
+                </div>
+
+                <div>
+                  <label htmlFor="name">Details</label>
+                  <input
+                    type="text"
+                    id="name"
+                    className="form-control"
+                    value={movieDetailEdit}
+                    onChange={(e) => setMovieDetailEdit(e.target.value)}
+                  />
+                  {errors.movieDetail ? <p>{errors.movieDetail.message}</p> : null}
                 </div>
 
                 <div>
