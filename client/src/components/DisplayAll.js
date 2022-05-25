@@ -37,16 +37,16 @@ const DisplayAll = () => {
     <div className="container">
       <div className="row">
         <div className="col-md-8 offset-md-2">
-          <Link to="/new">Add a Movie</Link>
-          <p className="purple-text">Rate a Movie</p>
+          <Link to="/new">add a movie</Link>
+          <p className="purple-text">rate a movie</p>
           <table className="table" id="myTable2" responsive="md">
             <thead>
               <tr>
-                <th scope="col" >Show / Movie (title)</th>
-                <th scope="col">Rating</th>
-                <th scope="col">Comments</th>
-                <th scope="col">Edit</th>
-                <th scope="col">Details</th>
+                <th scope="col" >show / movie (title)</th>
+                <th scope="col">rating</th>
+                <th scope="col">comments</th>
+                <th scope="col">edit</th>
+                <th scope="col">details</th>
                 
             </tr>
             </thead>
@@ -61,12 +61,12 @@ const DisplayAll = () => {
 
                     <td>
                       <Link to={`/edit/${movie._id}`}>
-                      <button className="btn btn-primary">Edit</button>
+                      <button className="btn btn-primary">edit</button>
                       </Link>
                       </td>
                       <td>
                       <Link to={`/details/${movie._id}`}>
-                        <button className="btn btn-primary">Details</button>
+                        <button className="btn btn-primary">details</button>
                       </Link>
 
                       

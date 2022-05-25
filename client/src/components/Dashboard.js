@@ -9,6 +9,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 const Dashboard = (props) => {
 
+
     const {id, userName} = useParams();
 
     const navigate = useNavigate()
@@ -33,19 +34,20 @@ const Dashboard = (props) => {
     };
 
     return (
-        <div style={{background: 'rgba(200, 50, 100, .5)', height: '100vh'}}>
-            <Nav style={{display: 'flex', justifyContent: 'center', position: 'relative', marginLeft: '600px'}} activeKey="/home">
-                <Nav.Item style={{fontSize: '40px', padding: '30px', marginRight: '30px'}}><b>CinDB</b>
+        <div style={{background: '#8c94f7', height: '100vh'}}>
+            <Nav style={{display: 'flex', position: 'relative', alignItems: 'center'}} activeKey="/home">
+                <Nav.Item style={{fontSize: '40px', padding: '30px', marginRight: '30px', color: 'pink', textShadow: '2px 2px 2px black'}}><b>CinDB</b>
                 </Nav.Item>
-                <div style={{display: 'flex',marginLeft: '200px'}}>
+                <div style={{display: 'flex', marginLeft: '750px'}}>
                 <Nav.Item class="profile">
-                    <Nav.Link style={{fontSize: '20px', padding: '50px'}} href={`/user/${userName}`}><b>{userName}'s profile</b></Nav.Link>
+                    <Nav.Link style={{fontSize: '20px', padding: '50px', color: 'pink', textShadow: '2px 2px 2px black'}} href={`/user/${userName}`}><b>{userName}'s profile</b></Nav.Link>
                 </Nav.Item>
                 <Nav.Item class="profile">
-                    <Nav.Link style={{fontSize: '20px', padding: '50px'}} href={`/newRating/${userName}`}><b>Add Rating</b></Nav.Link>
+                    <Nav.Link style={{fontSize: '20px', padding: '50px', marginLeft: '-20px', color: 'pink', textShadow: '2px 2px 2px black'}} href={`/newRating/${userName}`}><b>add rating</b></Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                    <Button style={{marginTop:'50px'}} classname="logoutBtn" size="sm" variant="danger" onClick={()=> handleLogout()}>Logout</Button>
+                    <Button style={{marginTop:'50px', marginLeft: '30px', backgroundColor: 'pink', color: 'black', border: 'none', boxShadow: '2px 2px 2px black'}} classname="logoutBtn" size="sm" 
+                    onClick={()=> handleLogout()}>logout</Button>
                 </Nav.Item>
                 </div>
             </Nav>
@@ -53,19 +55,19 @@ const Dashboard = (props) => {
         <div style={{display: 'flex', padding: '20px'}}>
             {allMovies.map((movie, index) => {
                 return (
-                  <div style={{padding: '50px', boxShadow: '10px 5px 5px 1px grey', borderRadius: '50px', marginRight: '10px'}} key={movie._id}>
+                  <div style={{padding: '50px', boxShadow: '10px 5px 5px 1px grey', borderRadius: '50px', marginRight: '10px', display: 'flex', flexDirection: 'column', gap: '10px', background: `pink`}} key={movie._id}>
                     <h2>{movie.movieName}</h2>
-                    <h5>Rating: {movie.rating}</h5>
+                    <h5>rating: {movie.rating}</h5>
                     <h6> <a href={`/user/${userName}`}>{movie.userName}</a></h6>
                     <p>"{movie.comment}"</p>
 
 
                     <div>
                       <Link to={`/edit/${movie.userName}/${movie._id}`}>
-                      <button style={{marginRight: '10px'}} className="btn btn-primary">Edit</button>
+                      <button style={{marginRight: '10px'}} className="btn btn-primary">edit</button>
                       </Link>
                       <Link to={`/${userName}/details/${movie._id}`}>
-                        <button className="btn btn-primary">Details</button>
+                        <button className="btn btn-primary">details</button>
                       </Link>
 
                       
