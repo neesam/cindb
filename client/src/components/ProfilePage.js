@@ -70,8 +70,9 @@ const ProfilePage = () => {
                         <div className="card w-25 m-2" key={index}>
                             <div className="card-body">
                                 <h5 className="card-title">{rating.movieName}</h5>
+                                <h6>{rating.movieDetail}</h6>
                                 <h6 className="card-subtitle mb-2 text-muted">Rating: {rating.rating}</h6>
-                                <p className="card-text">{rating.comment}</p>
+                                <p className="card-text">"{rating.comment}"</p>
                                 <Link className="card-link btn btn-sm btn-warning mr-1" to={`/edit/${user.userName}/${rating._id}`}>Edit</Link>
                                 <button className="card-link btn btn-sm btn-danger mr-1" onClick={() => handleDeleteRating(rating._id)}>Delete</button>
                             </div>
