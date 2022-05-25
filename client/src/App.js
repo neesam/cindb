@@ -10,7 +10,7 @@ import MovieDetails from "./components/ReviewDetails";
 
 function App() {
   return (
-    <div className="App">
+    <div style={{fontFamily: 'limelight'}} className="App">
       <BrowserRouter>
         <div>
           <Routes>

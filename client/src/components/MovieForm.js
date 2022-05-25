@@ -53,7 +53,7 @@ const MovieForm = () => {
             <Nav style={{display: 'flex', position: 'relative', alignItems: 'center'}} activeKey="/home">
                 <Nav.Item style={{fontSize: '40px', padding: '30px', marginRight: '30px', color: 'pink', textShadow: '2px 2px 2px black'}}><b><a style={{textDecoration: 'none', color: 'pink'}} href={`/home/${userName}`}>CinDB</a></b>
                 </Nav.Item>
-                <div style={{display: 'flex', marginLeft: '750px'}}>
+                <div style={{display: 'flex', marginLeft: '700px'}}>
                 <Nav.Item class="profile">
                     <Nav.Link style={{fontSize: '20px', padding: '50px', color: 'pink', textShadow: '2px 2px 2px black'}} href={`/user/${userName}`}><b>{userName}'s profile</b></Nav.Link>
                 </Nav.Item>
