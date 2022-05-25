@@ -67,7 +67,7 @@ const EditContractor = (props) => {
         <div className="row">
           <div className="col-md-4 offset-md-2">
             <Link to={`/home/${userName}`}>Home</Link>
-            <p><Link to="/new">Add a Movie / Show (title)</Link></p>
+            <p><Link to={`/newRating/${userName}`}>Add a Movie / Show (title)</Link></p>
             <form onSubmit={handleSubmit}>
               <div className="form-group">
 
