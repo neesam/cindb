@@ -49,25 +49,26 @@ const MovieDetails = (props) => {
 
     return (
         
-        <div style={{background: 'rgba(200, 50, 100, .5)', height: '100vh'}} className="movieDetails-component">
-            <Nav style={{display: 'flex', justifyContent: 'center', position: 'relative', marginLeft: '600px'}} activeKey="/home">
-                <Nav.Item style={{fontSize: '40px', padding: '30px', marginRight: '30px'}}><b>CinDB</b>
+        <div style={{background: '#8c94f7', height: '100vh'}} className="movieDetails-component">
+            <Nav style={{display: 'flex', position: 'relative', alignItems: 'center'}} activeKey="/home">
+                <Nav.Item style={{fontSize: '40px', padding: '30px', marginRight: '30px', color: 'pink', textShadow: '2px 2px 2px black'}}><b>CinDB</b>
                 </Nav.Item>
-                <div style={{display: 'flex',marginLeft: '200px'}}>
+                <div style={{display: 'flex', marginLeft: '750px'}}>
                 <Nav.Item class="profile">
-                    <Nav.Link style={{fontSize: '20px', padding: '50px'}} href={`/user/${userName}`}><b>{userName}'s profile</b></Nav.Link>
+                    <Nav.Link style={{fontSize: '20px', padding: '50px', color: 'pink', textShadow: '2px 2px 2px black'}} href={`/user/${userName}`}><b>{userName}'s profile</b></Nav.Link>
                 </Nav.Item>
                 <Nav.Item class="profile">
-                    <Nav.Link style={{fontSize: '20px', padding: '50px'}} href={`/newRating/${userName}`}><b>Add Rating</b></Nav.Link>
+                    <Nav.Link style={{fontSize: '20px', padding: '50px', marginLeft: '-20px', color: 'pink', textShadow: '2px 2px 2px black'}} href={`/newRating/${userName}`}><b>add rating</b></Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                    <Button style={{marginTop:'50px'}} classname="logoutBtn" size="sm" variant="danger" onClick={()=> handleLogout()}>Logout</Button>
+                    <Button style={{marginTop:'50px', marginLeft: '30px', backgroundColor: 'pink', color: 'black', border: 'none', boxShadow: '2px 2px 2px black'}} classname="logoutBtn" size="sm" 
+                    onClick={()=> handleLogout()}>logout</Button>
                 </Nav.Item>
                 </div>
             </Nav>
             <div style={{padding: '50px', display: 'flex', flexDirection: 'column', gap: '20px', background: 'white', margin: '50px', borderRadius: '50px', boxShadow: '5px 5px 5px grey', width: '750px'}}>
-            <h2>{movieDetails.movieName}</h2>
-            <h3>Rating: {movieDetails.rating} | <a href={`/user/${movieDetails.userName}`}>{movieDetails.userName}</a></h3>
+            <h2 style={{fontSize: '50px'}}>{movieDetails.movieName}</h2>
+            <h3>Rating: {movieDetails.rating}</h3>
             <h4>"{movieDetails.comment}"</h4>
             
             
