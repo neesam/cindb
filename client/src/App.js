@@ -20,7 +20,7 @@ function App() {
             <Route path="/user/edit/:user" element={<EditUser/>}/>
             <Route path="/newRating/:userName" element={<MovieForm />} />
             <Route path="/edit/:userName/:id" element={<EditMovie />} />
-            <Route path="/details/:id" element={<MovieDetails />} />
+            <Route path="/:userName/details/:id" element={<MovieDetails />} />
           </Routes>
         </div>
       </BrowserRouter>

@@ -64,7 +64,7 @@ const Dashboard = (props) => {
                       <Link to={`/edit/${movie.userName}/${movie._id}`}>
                       <button style={{marginRight: '10px'}} className="btn btn-primary">Edit</button>
                       </Link>
-                      <Link to={`/details/${movie._id}`}>
+                      <Link to={`/${userName}/details/${movie._id}`}>
                         <button className="btn btn-primary">Details</button>
                       </Link>
 
