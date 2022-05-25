@@ -28,7 +28,7 @@ const Login = () => {
 
     return(
         <Form onSubmit={handleSubmit}>
-            <h1>Login</h1>
+            <h1 style={{marginBottom: '30px'}}>Login</h1>
             {error && <p style={{color: 'red'}}>{error}</p>}
             {successMessage.length > 0 && (<p style={{color: "green"}}>{successMessage}</p>)}
             <div>
@@ -40,7 +40,7 @@ const Login = () => {
             <div className="mt-3">
                 <Form.Control type="password" onChange={(e) => setPassword(e.target.value)} placeholder="Password"/>
             </div>
-            <div>
+            <div style={{marginTop: '10px'}}>
                 <Button className="submit-button" type="submit" size="sm">Submit</Button>
             </div>
         </Form>

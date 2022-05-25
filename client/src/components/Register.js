@@ -36,33 +36,33 @@ const Register = () => {
     };
     return(
         <Form onSubmit={handleSubmit}>
-            <h1>Register</h1>
+            <h1 style={{marginBottom: '30px'}}>Register</h1>
             {error && <p style = {{color: "red"}}>{error}</p>}
-            <div>
+            <div style={{marginTop: '5px'}}>
                 <Form.Label>First Name:</Form.Label>
                 <Form.Control type="text" onChange={(e) => setFirstName(e.target.value)}/>
             </div>
-            <div>
+            <div style={{marginTop: '5px'}}>
                 <Form.Label>Last Name:</Form.Label>
                 <Form.Control type="text" onChange={(e) => setLastName(e.target.value)}/>
             </div>
-            <div>
+            <div style={{marginTop: '5px'}}>
                 <Form.Label> Username:</Form.Label>
                 <Form.Control type="text" onChange={(e) => setUserName(e.target.value)}/>
             </div>
-            <div>
+            <div style={{marginTop: '5px'}}>
                 <Form.Label>Email:</Form.Label>
                 <Form.Control type="text" onChange={(e) => setEmail(e.target.value)}/>
             </div>
-            <div>
+            <div style={{marginTop: '5px'}}>
                 <Form.Label>Password:</Form.Label>
                 <Form.Control type="password" onChange={(e) => setPassword(e.target.value)}/>
             </div>
-            <div>
+            <div style={{marginTop: '5px'}}>
                 <Form.Label>Confirm Password:</Form.Label>
                 <Form.Control type="password" onChange={(e) => setConfirmPassword(e.target.value)}/>
             </div>
-            <Button className="submit-button" variant="primary" size="sm" type="submit">
+            <Button style={{marginTop: '15px'}} className="submit-button" variant="primary" size="sm" type="submit">
                     Submit
             </Button>
         </Form>

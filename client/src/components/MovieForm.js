@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useState } from "react";
 import "../App.css";
+import Nav from 'react-bootstrap/Nav';
+import Button from 'react-bootstrap/Button';
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import React from 'react';
@@ -27,6 +29,12 @@ const MovieForm = () => {
             })
     }, []);
 
+    const handleLogout = () => {
+        axios.post("http://localhost:8000/api/user/logout", {}, {withCredentials:true})
+            .then((res) => console.log(res), navigate("/"))
+            .catch((err) => console.log(err, "Error"));
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
         axios
@@ -41,18 +49,32 @@ const MovieForm = () => {
             });
     };
     return (
-        <div className="movieForm-component">
+        <div style={{background: '#8c94f7', height: '100vh'}}>
+            <Nav style={{display: 'flex', position: 'relative', alignItems: 'center'}} activeKey="/home">
+                <Nav.Item style={{fontSize: '40px', padding: '30px', marginRight: '30px', color: 'pink', textShadow: '2px 2px 2px black'}}><b><a style={{textDecoration: 'none', color: 'pink'}} href={`/home/${userName}`}>CinDB</a></b>
+                </Nav.Item>
+                <div style={{display: 'flex', marginLeft: '750px'}}>
+                <Nav.Item class="profile">
+                    <Nav.Link style={{fontSize: '20px', padding: '50px', color: 'pink', textShadow: '2px 2px 2px black'}} href={`/user/${userName}`}><b>{userName}'s profile</b></Nav.Link>
+                </Nav.Item>
+                <Nav.Item class="profile">
+                    <Nav.Link style={{fontSize: '20px', padding: '50px', marginLeft: '-20px', color: 'pink', textShadow: '2px 2px 2px black'}} href={`/newRating/${userName}`}><b>add rating</b></Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                    <Button style={{marginTop:'50px', marginLeft: '30px', backgroundColor: 'pink', color: 'black', border: 'none', boxShadow: '2px 2px 2px black'}} classname="logoutBtn" size="sm" 
+                    onClick={()=> handleLogout()}>logout</Button>
+                </Nav.Item>
+                </div>
+            </Nav>
+        <div style={{padding: '50px', background: 'white', margin: '50px', borderRadius: '50px', boxShadow: '5px 5px 5px grey', display: 'flex', flexDirection: 'column'}} className="movieForm-component">
             <div className="container">
                 <div className="row">
-                    <div className="col-md-4 offset-md-2">
-
-                        <Link to={`/home/${userName}`}>Home</Link>
                         <form onSubmit={handleSubmit}>
                             <input type="hidden" name="userName" value={{ userName }} />
                             <div className="form-group">
-                                <h3 className="purple-text">Create A Movie Rating</h3>
-                                <div>
-                                    <label htmlFor="name">Show / Movie (title)</label>
+                                <h2 className="purple-text">create a rating</h2>
+                                <div style={{marginTop: '40px'}}>
+                                    <label htmlFor="name">show / movie</label>
                                     <input
                                         type="text"
                                         className="form-control"
@@ -62,8 +84,8 @@ const MovieForm = () => {
                                     {errors.movieName ? <p>{errors.movieName.message}</p> : null}
                                 </div>
 
-                                <div>
-                                    <label>Details</label><br />
+                                <div style={{marginTop: '10px'}}>
+                                    <label>details</label><br />
                                     <input
                                         type="text"
                                         className="form-control"
@@ -74,8 +96,8 @@ const MovieForm = () => {
                                 </div>
 
                                 
-                                <div>
-                                    <label>Rating</label><br />
+                                <div style={{marginTop: '10px'}}>
+                                    <label>rating</label><br />
                                     <input
                                         type="text"
                                         className="form-control"
@@ -85,8 +107,8 @@ const MovieForm = () => {
                                     {errors.rating ? <p>{errors.rating.message}</p> : null}
                                 </div>
 
-                                <div>
-                                    <label>Comment</label><br />
+                                <div style={{marginTop: '10px'}}>
+                                    <label>comment</label><br />
                                     <input
                                         type="text"
                                         className="form-control"
@@ -99,16 +121,16 @@ const MovieForm = () => {
 
 
 
-                                <div className="button-space">
+                                <div style={{marginTop: '30px'}} className="button-space">
                                     <button className="btn btn-primary" type="submit">
-                                        SUBMIT
+                                        submit
                                     </button>
                                 </div>
                             </div>
                         </form>
-                    </div>
                 </div>
             </div>
+        </div>
         </div>
     );
 };

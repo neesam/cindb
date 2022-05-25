@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "../App.css";
+import Nav from 'react-bootstrap/Nav';
+import Button from 'react-bootstrap/Button';
 import { Link, useParams, useNavigate } from "react-router-dom";
 
 const EditContractor = (props) => {
@@ -45,6 +47,12 @@ const EditContractor = (props) => {
       });
   }, [id]);
 
+  const handleLogout = () => {
+    axios.post("http://localhost:8000/api/user/logout", {}, {withCredentials:true})
+        .then((res) => console.log(res), navigate("/"))
+        .catch((err) => console.log(err, "Error"));
+};
+
   const handleSubmit = (e) => {
     console.log("submit called")
     e.preventDefault();
@@ -62,21 +70,35 @@ const EditContractor = (props) => {
 
   };
   return (
-    <div className="movieForm-component">
+    <div style={{background: '#8c94f7', height: '100vh'}}>
+    <Nav style={{display: 'flex', position: 'relative', alignItems: 'center'}} activeKey="/home">
+                <Nav.Item style={{fontSize: '40px', padding: '30px', marginRight: '30px', color: 'pink', textShadow: '2px 2px 2px black'}}><b><a style={{textDecoration: 'none', color: 'pink'}} href={`/home/${userName}`}>CinDB</a></b>
+                </Nav.Item>
+                <div style={{display: 'flex', marginLeft: '750px'}}>
+                <Nav.Item class="profile">
+                    <Nav.Link style={{fontSize: '20px', padding: '50px', color: 'pink', textShadow: '2px 2px 2px black'}} href={`/user/${userName}`}><b>{userName}'s profile</b></Nav.Link>
+                </Nav.Item>
+                <Nav.Item class="profile">
+                    <Nav.Link style={{fontSize: '20px', padding: '50px', marginLeft: '-20px', color: 'pink', textShadow: '2px 2px 2px black'}} href={`/newRating/${userName}`}><b>add rating</b></Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                    <Button style={{marginTop:'50px', marginLeft: '30px', backgroundColor: 'pink', color: 'black', border: 'none', boxShadow: '2px 2px 2px black'}} classname="logoutBtn" size="sm" 
+                    onClick={()=> handleLogout()}>logout</Button>
+                </Nav.Item>
+                </div>
+            </Nav>
+    <div style={{padding: '50px', background: 'white', margin: '50px', borderRadius: '50px', boxShadow: '5px 5px 5px grey', display: 'flex', flexDirection: 'column'}}  className="movieForm-component">
       <div className="container">
         <div className="row">
-          <div className="col-md-4 offset-md-2">
-            <Link to={`/home/${userName}`}>Home</Link>
-            <p><Link to="/new">Add a Movie / Show (title)</Link></p>
             <form onSubmit={handleSubmit}>
               <div className="form-group">
 
 
-                <h2>Edit Movie</h2>
+                <h2>edit rating</h2>
              
 
-                <div>
-                  <label htmlFor="name">Movie / Show (title)</label>
+                <div style={{marginTop: '40px'}}>
+                  <label htmlFor="name">movie / show</label>
                   <input
                     type="text"
                     id="name"
@@ -87,8 +109,8 @@ const EditContractor = (props) => {
                   {errors.movieName ? <p>{errors.movieName.message}</p> : null}
                 </div>
 
-                <div>
-                  <label htmlFor="name">Details</label>
+                <div style={{marginTop: '10px'}}>
+                  <label htmlFor="name">details</label>
                   <input
                     type="text"
                     id="name"
@@ -99,8 +121,8 @@ const EditContractor = (props) => {
                   {errors.movieDetail ? <p>{errors.movieDetail.message}</p> : null}
                 </div>
 
-                <div>
-                  <label htmlFor="name">Rating</label>
+                <div style={{marginTop: '10px'}}>
+                  <label htmlFor="name">rating</label>
                   <input
                     type="text"
                     id="name"
@@ -111,8 +133,8 @@ const EditContractor = (props) => {
                   {errors.rating ? <p>{errors.rating.message}</p> : null}
                 </div>
 
-                <div>
-                  <label htmlFor="name">Comment</label>
+                <div style={{marginTop: '10px'}}>
+                  <label htmlFor="name">comment</label>
                   <input
                     type="text"
                     id="name"
@@ -123,16 +145,16 @@ const EditContractor = (props) => {
                   {errors.comment ? <p>{errors.comment.message}</p> : null}
                 </div>
 
-                <div className="button-space">
+                <div style={{marginTop: '30px'}} className="button-space">
                   <button className="btn btn-primary" type="submit">
-                    SUBMIT
+                    submit
                   </button>
                 </div>
               </div>
             </form>
-          </div>
         </div>
       </div>
+    </div>
     </div>
 
 

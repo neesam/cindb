@@ -5,7 +5,7 @@ import Register from '../components/Register';
 const Main = (props) => {
     
     return(
-        <div className="logreg">
+        <div style={{padding: '50px', background: 'white', background: '#8c94f7', height: '100vh'}} className="logreg">
             <div><Login /></div>
             <div><Register/></div>
         </div>

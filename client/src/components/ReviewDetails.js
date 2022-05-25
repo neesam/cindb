@@ -40,7 +40,7 @@ const MovieDetails = (props) => {
                 console.log(res);
                 console.log(res.data);
                 
-                navigate(`/user/${userName}`);
+                navigate(`/home/${userName}`);
             })
             .catch((err) => {
                 console.log(err);
