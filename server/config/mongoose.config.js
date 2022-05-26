@@ -9,3 +9,8 @@ mongoose.connect(`mongodb://localhost/${process.env.DB_NAME}`, {
 })
     .then(() => console.log(`Connected to the ${process.env.DB_NAME} database`))
     .catch(err => console.log("Something went wrong when connecting to the database", err));
+
+
+
+
+
